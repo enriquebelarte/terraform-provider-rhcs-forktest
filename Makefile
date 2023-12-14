@@ -31,7 +31,7 @@ GO_ARCH=$(shell go env GOARCH)
 TARGET_ARCH=$(shell go env GOOS)_${GO_ARCH}
 
 # Import path of the project:
-import_path:=github.com/terraform-redhat/terraform-provider-rhcs
+import_path:=github.com/enriquebelarte/terraform-provider-rhcs
 
 # Version of the project:
 version=$(shell git describe --abbrev=0 | sed 's/^v//' | sed 's/-prerelease\.[0-9]*//')
@@ -140,3 +140,9 @@ e2e_test: tools install
 .PHONY: check-gen
 check-gen: generate
 	scripts/assert_no_diff.sh "generate"
+
+.PHONY: prepare_release
+
+prepare_release:
+	import_path=${import_path} ldflags="${ldflags}" bash ./build/build_multiarch
+
