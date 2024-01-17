@@ -379,7 +379,6 @@ spec:
     - name: git-auth
       optional: true
   taskRunTemplate: {}
-
   workspaces:
   - name: workspace
     volumeClaimTemplate:
