@@ -37,6 +37,7 @@ import_path:=github.com/enriquebelarte/terraform-provider-rhcs
 version=$(shell git describe --abbrev=0 | sed 's/^v//' | sed 's/-prerelease\.[0-9]*//')
 commit:=$(shell git rev-parse --short HEAD)
 git_status:=$(shell git status --porcelain)
+REL_VER=$(version)
 
 # Set the linker flags so that the version will be included in the binaries:
 ldflags:=\
