@@ -4,7 +4,7 @@ archs=(amd64 arm64)
 oses=(linux darwin windows)
 
 #REL_VER=$(git ls-remote --tags --sort='-v:refname' https://${import_path} | head -n 1 | awk -F/ {'print $3'}| sed "s/v//")
-#REL_VER=0.0.4
+REL_VER=$(git describe --tags --abbrev=0 | sed "s/v//")
 if [[ -z "$REL_VER" ]]; then
     echo "Must provide version to prepare release" 1>&2
     exit 1
